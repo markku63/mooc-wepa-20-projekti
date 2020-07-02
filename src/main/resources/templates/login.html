@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+The MIT License
+
+Copyright 2020 Markku Kolkka <markku.kolkka@iki.fi>.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/layout :: head(title='Kirjaudu sisään')">
+        <title>TODO supply a title</title>
+    </head>
+    <body>
+        <header class="container-fluid">
+            <h1>Kirjaudu sisään</h1>
+        </header>
+        <div class="container-fluid">
+            <form th:action="@{/login}" th:method="post">
+                <div th:if='${error}' class='alert alert-warning'>Virheellinen käyttäjätunnus tai salasana</div>
+                <div th:if='${logout}' class='alert alert-success'>Olet kirjautunut ulos</div>
+                <div class="form-group row">
+                    <label for='username' class="col-sm-2 col-form-label">Käyttäjätunnus:</label>
+                    <div class="col-sm-10">
+                        <input type='text' name='username' id="username" value="" required="" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for='password' class="col-sm-2 col-form-label">Salasana:</label>
+                    <div class="col-sm-10">
+                        <input type='password' name='password' id="password" required="" class="form-control"/>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" name='submit'>Kirjaudu!</button>
+            </form>
+        </div>
+    </body>
+</html>
